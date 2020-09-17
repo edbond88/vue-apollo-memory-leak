@@ -5,6 +5,8 @@ import apolloClient from "./apolloClient";
 
 Vue.config.productionTip = false;
 
+Vue.use(VueApollo);
+
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
 });

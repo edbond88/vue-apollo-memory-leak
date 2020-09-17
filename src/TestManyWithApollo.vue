@@ -1,16 +1,16 @@
 <template>
   <div class="test-many">
-    <h1>Many nodes</h1>
+    <h1>Many nodes with Apollo</h1>
     <Post v-for="post in list" :key="post.uuid" :post="post"/>
   </div>
 </template>
 
 <script>
+import { gql } from "@apollo/client";
 import Post from "./Post";
 
-
 export default {
-  name: "TestMany",
+  name: "TestManyWithApollo",
 
   components: { Post },
 
@@ -19,6 +19,18 @@ export default {
       list: this.getNodes(),
       countries: null
     };
+  },
+
+  apollo: {
+    countries: {
+      query: gql`
+        query Countries {
+          countries {
+            name
+          }
+        }
+      `,
+    }
   },
 
   methods: {
